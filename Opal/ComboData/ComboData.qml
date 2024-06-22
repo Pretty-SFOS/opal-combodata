@@ -75,6 +75,8 @@ import Sailfish.Silica 1.0
 */
 
 Item {
+    id: root
+
     /*!
       This property holds the associated \c ComboBox.
 
@@ -175,6 +177,10 @@ Item {
             comboBox.indexOfData = Qt.binding(function() {
                 return indexOfData
             })
+        }
+
+        if (comboBox.hasOwnProperty('cdata')) {
+            comboBox.cdata = root
         }
     }
 
