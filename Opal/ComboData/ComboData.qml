@@ -133,6 +133,23 @@ Item {
         return -1
     }
 
+    /*!
+      This function is a shorthand helper to reset the current index.
+
+      The current index is set to the first menu item matching \a data, or \c -1
+      if not matching item was found. You can use this function without exposing
+      \c indexOfData.
+    */
+    function reset(data) {
+        if (!_menu || !comboBox) {
+            console.error('[Opal.ComboData] Cannot reset current index because ' +
+                          'no menu or ComboBox is available.')
+            return
+        }
+
+        comboBox.currentIndex = indexOfData(data)
+    }
+
     readonly property var _menu: !!comboBox ? comboBox.menu : null
     readonly property var _currentItem: !!comboBox &&
         !!comboBox.currentItem ? comboBox.currentItem : null
