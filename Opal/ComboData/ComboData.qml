@@ -22,6 +22,13 @@ import Sailfish.Silica 1.0
     The helper function \l indexOfData determines the index of a given data
     value. This can then be used to change the combo box's current index.
 
+    \section2 Exposing current data
+
+    If you want to access the current data from outside of the combo box, you
+    have to expose the property. Simply declare a new property \c currentData in
+    your \c ComboBox. \c ComboData will now make sure that this property is
+    bound to the data property of the currently selected menu item.
+
     Example: the \c value property of the currently selected item can be
     accessed through \c currentData property of the \c ComboBox, which is
     automatically bound by \l ComboData to \l currentData.
@@ -69,6 +76,55 @@ import Sailfish.Silica 1.0
 
         Component.onCompleted: {
             currentIndex = indexOfData(myConfigValue)
+        }
+    }
+    \endqml
+
+    \section2 Without exposing properties
+
+    Sometimes values are only used inside of the \c ComboBox. In that case, it
+    is unnecessary to expose \l currentData and \l indexOfData. Instead, create
+    a property \c cdata. This property is then automatically bound to the
+    \c ComboData instance of your \c ComboBox.
+
+    Example: the currently selected fruit is loaded from and written to
+    \c myConfig.
+
+    \qml
+    import QtQuick 2.0
+    import Sailfish.Silica 1.0
+    import Nemo.Configuration 1.0
+    import Opal.ComboData 1.0
+
+    Page {
+        id: root
+
+        ConfigurationValue {
+            id: myConfig
+            key: "/apps/my-app/my-key"
+            defaultValue: "fruit-2"
+        }
+
+        ComboBox {
+            label: qsTr("Fruit")
+            property ComboData cdata; ComboData { dataRole: "value" }
+            onValueChanged: myConfig.activeFruit = cdata.currentData
+            Component.onCompleted: cdata.reset(myConfig.activeFruit)
+
+            menu: ContextMenu {
+                MenuItem {
+                    property string value: "fruit-1"
+                    text: qsTr("Banana")
+                }
+                MenuItem {
+                    property string value: "fruit-2"
+                    text: qsTr("Kiwi")
+                }
+                MenuItem {
+                    property string value: "fruit-3"
+                    text: qsTr("Pear")
+                }
+            }
         }
     }
     \endqml
