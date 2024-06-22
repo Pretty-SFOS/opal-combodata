@@ -9,6 +9,9 @@ SPDX-License-Identifier: GFDL-1.3-or-later
 
 - added `ComboData.reset(data)` to easily reset the current index to the first
   menu item matching `data`
+- `ComboData` now binds itself to the parent's `cdata` property, if such a
+  property is defined
+- added complete examples to the documentation
 
 ## 2.0.0 (2023-06-29)
 
