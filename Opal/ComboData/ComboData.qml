@@ -107,7 +107,8 @@ import Sailfish.Silica 1.0
 
         ComboBox {
             label: qsTr("Fruit")
-            property ComboData cdata; ComboData { dataRole: "value" }
+            property ComboData cdata
+            ComboData { dataRole: "value" }
             onValueChanged: myConfig.activeFruit = cdata.currentData
             Component.onCompleted: cdata.reset(myConfig.activeFruit)
 
