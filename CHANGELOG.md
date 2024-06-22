@@ -5,6 +5,11 @@ SPDX-License-Identifier: GFDL-1.3-or-later
 
 # Changelog
 
+## 2.1.0 (2024-06-22)
+
+- added `ComboData.reset(data)` to easily reset the current index to the first
+  menu item matching `data`
+
 ## 2.0.0 (2023-06-29)
 
 - moved the ready-made Attribution component from
