@@ -5,6 +5,12 @@ SPDX-License-Identifier: GFDL-1.3-or-later
 
 # Changelog
 
+## 2.1.1 (2024-10-10)
+
+- updated packaging boilerplate
+- removed unused translations (there are no translated strings in this module)
+- removed unused licenses
+
 ## 2.1.0 (2024-06-22)
 
 - added `ComboData.reset(data)` to easily reset the current index to the first
