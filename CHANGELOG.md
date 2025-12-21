@@ -5,6 +5,10 @@ SPDX-License-Identifier: GFDL-1.3-or-later
 
 # Changelog
 
+## 2.1.2 (2025-12-21)
+
+- packaging fixes
+
 ## 2.1.1 (2024-10-10)
 
 - updated packaging boilerplate
